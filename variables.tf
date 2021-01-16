@@ -10,7 +10,7 @@ variable "instancetype" {
 
 variable "key_name" {
   type    = string
-  default = "dvt_tools"
+  default = "dvt_key"
 }
 
 variable "pub_key" {

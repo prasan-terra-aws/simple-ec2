@@ -1,5 +1,5 @@
 ###### AWS Key Pair ###################
-resource "aws_key_pair" "devkey" {
+resource "aws_key_pair" "dvtkey" {
   key_name   = var.key_name
   public_key = file(var.pub_key)
 }
@@ -30,6 +30,7 @@ resource "aws_instance" "slack_server" {
   security_groups      = ["default"]
   iam_instance_profile = "Ec2-s3"
   count                = var.ec2_count
+  depends_on = [ aws_key_pair.dvtkey ]
   tags = {
     Name = element(var.tags, count.index)
   }
