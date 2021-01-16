@@ -34,3 +34,9 @@ resource "aws_instance" "slack_server" {
     Name = element(var.tags, count.index)
   }
 }
+
+/*
+output "Ec2_PubIP" {
+  value = element(length(aws_instance.slack_server[count.index].associate_public_ip_address), count.index)
+  #value = aws_instance.slack_server[count.index].associate_public_ip_address
+}*/

@@ -23,5 +23,5 @@ variable "ec2_count" {
 
 variable "tags" {
   type    = list
-  default = ["slack1", "slack2"]
+  default = ["bc1", "bc2"]
 }
