@@ -30,14 +30,14 @@ resource "aws_instance" "slack_server" {
   security_groups      = ["default"]
   iam_instance_profile = "Ec2-s3"
   count                = var.ec2_count
-  depends_on = [ aws_key_pair.dvtkey ]
+  //depends_on = [ aws_key_pair.dvtkey ]
   tags = {
     Name = element(var.tags, count.index)
   }
 }
 
-/*
 output "Ec2_PubIP" {
-  value = element(length(aws_instance.slack_server[count.index].associate_public_ip_address), count.index)
+  value = aws_instance.slack_server[*].public_ip
+  #value = aws_instance.slack_server[*].associate_public_ip_addresssociate_public_ip_address), count.index)
   #value = aws_instance.slack_server[count.index].associate_public_ip_address
-}*/
+}
