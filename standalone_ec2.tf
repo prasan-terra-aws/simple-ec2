@@ -4,7 +4,7 @@ resource "aws_key_pair" "devkey" {
   public_key = file(var.pub_key)
 }
 
-
+###### Fetching latest ami image #######
 data "aws_ami" "latest_ami" {
   most_recent = true
   owners      = ["amazon"]
@@ -22,6 +22,7 @@ data "aws_ami" "latest_ami" {
   }
 }
 
+############ Provisioning Ec2 Instance ########
 resource "aws_instance" "slack_server" {
   ami                  = data.aws_ami.latest_ami.id
   instance_type        = var.instancetype
